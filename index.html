@@ -1,11 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Szyfrowanie</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="icons8-encryption-green.png">
+
 </head>
 <body>
-    
+    <div id="container">
+        <div class="code-area">
+            <div class="text-container">
+                <div class="text-header">
+                    <button class="copy-button">copy</button>
+                </div>
+                <textarea class="text-field" name="text" id="text-encrypt" cols="30"rows="8"></textarea>
+            </div>
+            
+            <button class="code-button" onclick="encryptText()">Zaszyfruj</button>
+            <p class="text-output hidden"></p>  
+        </div>
+        <div class="code-area">   
+            <div class="key-area">
+                <label for="code-key" >Podaj klucz:</label>
+                <input type="text" name="code-key" id="code-key">
+            </div>
+            <textarea class="text-field" name="text" id="text-decrypt" cols="30"rows="8"></textarea>
+            <button class="code-button" onclick="decryptText()">Odszyfruj</button>
+            <p class="text-output hidden"></p> 
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
