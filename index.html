@@ -5,32 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Szyfrowanie</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="icons8-encryption-green.png">
+    <link rel="icon" type="image/x-icon" href="img/icons8-encryption-green.png">
 
 </head>
 <body>
     <div id="container">
+        <header class="topbar">
+            <div class="switch-container">
+                <span class="option">Zaszyfruj</span>
+                <input type="checkbox" class="toggle-box" name="switch" id="switch">
+                <label for="switch" class="toggle-label">
+                  <span class="handle"></span>              
+                </label>
+                <span class="option">Odszyfruj</span>
+            </div>
+        </header>
         <div class="code-area">
-            <div class="text-container">
-                <div class="text-header">
-                    <button class="copy-button">copy</button>
-                </div>
-                <textarea class="text-field" name="text" id="text-encrypt" cols="30"rows="8"></textarea>
-            </div>
-            
-            <button class="code-button" onclick="encryptText()">Zaszyfruj</button>
-            <p class="text-output hidden"></p>  
-        </div>
-        <div class="code-area">   
-            <div class="key-area">
-                <label for="code-key" >Podaj klucz:</label>
-                <input type="text" name="code-key" id="code-key">
-            </div>
-            <textarea class="text-field" name="text" id="text-decrypt" cols="30"rows="8"></textarea>
-            <button class="code-button" onclick="decryptText()">Odszyfruj</button>
-            <p class="text-output hidden"></p> 
         </div>
     </div>
-    <script src="script.js"></script>
+    <script type="module" src ="dom-structure.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>

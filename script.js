@@ -1,22 +1,21 @@
-const textElement = document.querySelector("#text-encrypt");
-const decryptElement = document.querySelector("#text-decrypt");
-const textOutputs = document.querySelectorAll(".text-output");
-const keyElement = document.querySelector("#code-key");
-
 const date = new Date;
 const hours = date.getHours();
 const minutes = date.getMinutes();
 
 let currentTime = hours+":"+minutes;
-const codeKey = Math.ceil(minutes/hours);
+const codeKey = hours > 0 ? Math.ceil(minutes / hours) : 1;
+
 
 console.log(currentTime);
 console.log(codeKey);
 
 
 
-const encryptText = () =>{
-    const text = textElement.value;
+export const encryptText = (event) =>{
+    const textElement = document.querySelector("#text-area");
+    const textOutput = document.querySelector(".text-output");
+
+    const text = event.target.value;
     const textArray = [...text];
 
     const textEncryptedArray = [];
@@ -33,12 +32,16 @@ const encryptText = () =>{
 
     const textEncrypted = textEncryptedArray.join("");
 
-    textOutputs[0].textContent = textEncrypted;
-    textOutputs[0].classList.remove("hidden");
+    textOutput.textContent = textEncrypted;
+    textOutput.classList.remove("hidden");
 }
 
-const decryptText = () =>{
-    const textEncrypted = decryptElement.value;
+export const decryptText = () =>{
+    const textElement = document.querySelector("#text-area");
+    const textOutput = document.querySelector(".text-output");
+    const keyElement = document.querySelector("#code-key");
+
+    const textEncrypted = textElement.value;
     const textEncryptedArray = [...textEncrypted];
     const key = keyElement.value;
 
@@ -52,7 +55,8 @@ const decryptText = () =>{
     })
 
     const textDecrypted = textDecryptedArray.join("");
-    textOutputs[1].textContent = textDecrypted;
-    textOutputs[1].classList.remove("hidden");
+    textOutput.textContent = textDecrypted;
+    textOutput.classList.remove("hidden");
 }
+
 

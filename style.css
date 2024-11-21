@@ -14,17 +14,74 @@ body{
 #container{
     width: 100%;
     min-height: 100vh;
-    background: #1e3333;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image: url(img/matrix-background.jpg);
+    object-fit: cover;
 }
 
-.text-header{
+.topbar{
+    background: #000;
     width: 100%;
-    background: black;
-
+    color: white;
+    position: absolute;
+    top: 0;
+    box-shadow: 0px 0px 10px 5px white;
 }
+
+/*switch*/
+.switch-container{
+    width: 400px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.switch-container label{
+    width: 60px;
+    height: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: rgb(241, 61, 34);
+    padding: 3px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.option{
+    pointer-events: none; /*coś nie działa*/
+}
+
+.handle{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #cccccc;
+    border: 1px solid #444444;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.toggle-box{
+    display: none; 
+}
+
+.toggle-box:checked ~ .toggle-label{
+    background-color: #28e681;
+    box-shadow: 0 0 5px #cccccc;
+}
+
+.toggle-box:checked ~ .toggle-label .handle {
+    transform: translateX(40px);
+    box-shadow: 0 0 5px #cccccc;
+}
+/*koniec switcha*/
+
 
 .code-area{
     width: 50%;
@@ -45,19 +102,40 @@ body{
     text-align: center;
 }
 
-.text-field:focus, #code-key:focus{
-   
-    outline: none;
+.text-container{
+    border: 2px solid silver;
+    border-radius: .5rem;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 5px white;
+}
+
+.text-header{
+    width: 100%;
+    padding: 1rem;
+    background: black;
+    color: white;
+}
+
+.copy-button{
+    font-size: 1.2rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .text-field{
     padding: 1rem;
-    border-radius: .5rem;
+    font-size: 1.2rem;
     border: none;
 }
 
+.text-field:focus, #code-key:focus{
+    outline: none;
+}
+
 .code-button{
-    background: none;
+    background: #000;
     border: 1px solid white;
     border-radius: .5rem;
     padding: .5rem;
@@ -66,11 +144,12 @@ body{
 }
 
 .code-button:hover{
-    box-shadow: 0px 0px 5px white;
+    box-shadow: 0px 0px 10px 5px white;
     cursor: pointer;
 }
 
 .text-output{
+    background: #000;
     border: 2px solid white;
     border-radius: .5rem;
     color: white;
