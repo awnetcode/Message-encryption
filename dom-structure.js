@@ -1,5 +1,6 @@
 import { encryptText } from "./script.js";
 import { decryptText } from "./script.js";
+import { copyCode } from "./script.js";
 
 const codeAreaElement = document.querySelector(".code-area");
 const switchElement = document.querySelector("#switch");
@@ -10,7 +11,8 @@ const createEncodeElement = () =>{
     codeAreaElement.appendChild(createResultElement());
 
     const textElement = document.querySelector("#text-area");
-    textElement.addEventListener("change", encryptText);
+    textElement.addEventListener("input", encryptText);
+
 }
 
 const createDecodeElement = () =>{
@@ -20,7 +22,7 @@ const createDecodeElement = () =>{
     codeAreaElement.appendChild(createResultElement());
 
     const textElement = document.querySelector("#text-area");
-    textElement.addEventListener("change", decryptText);
+    textElement.addEventListener("input", decryptText);
 }
 
 const createKeyElement = () =>{
@@ -44,6 +46,8 @@ const createKeyElement = () =>{
 }
 
 const createTextElement = (title) =>{
+    let windowWidth = window.innerWidth;
+    let areaColumns = 0;
 
     const textContainerElement = document.createElement("div");
     textContainerElement.classList.add("text-container");
@@ -56,7 +60,9 @@ const createTextElement = (title) =>{
     textAreaElement.name = "text";
     textAreaElement.id = "text-area";
     textAreaElement.rows = 10;
-    textAreaElement.cols = 50;
+    //Dostosowanie textarea do szerokości okna
+    windowWidth > 400 ? areaColumns = 50 : areaColumns = 25;
+    textAreaElement.cols = areaColumns;
     textAreaElement.classList.add("text-field");
 
     textContainerElement.appendChild(TextHeaderElement);
@@ -67,11 +73,24 @@ const createTextElement = (title) =>{
 
 const createResultElement = () =>{
     const paragraphElement = document.createElement("p");
+    const containerElement = document.createElement("div");
+    const headerElement = document.createElement("div");
+    const spanElement = document.createElement("span");
+    containerElement.classList.add("output-container");
+    headerElement.classList.add("text-header");
 
     paragraphElement.classList.add("text-output");
-    paragraphElement.classList.add("hidden");
+    containerElement.classList.add("hidden");
 
-    return paragraphElement;
+    spanElement.textContent = "skopiuj";
+    spanElement.classList.add("copy-button");
+    spanElement.onclick = copyCode;
+    headerElement.appendChild(spanElement);
+
+    containerElement.appendChild(headerElement);
+    containerElement.appendChild(paragraphElement);
+
+    return containerElement;
 }
 //createEncodeElement();
  const renderMainContent = () =>{
@@ -87,7 +106,7 @@ const createResultElement = () =>{
         switchElement.checked = false;
         createEncodeElement();
     })
-}  
+}
 
 renderMainContent();
 
