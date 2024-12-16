@@ -92,7 +92,7 @@ const createResultElement = () =>{
 
     return containerElement;
 }
-//createEncodeElement();
+
  const renderMainContent = () =>{
     switchElement.addEventListener("change", (event)=>{
         if(event.target.checked){

@@ -12,12 +12,10 @@ const year = date.getFullYear();
 let currentTime = hours+":"+minutes;
 const codeKey = hours > 0 ? Math.ceil(minutes / hours) : 1;
 
-dateArea.textContent = `${days[dayOfWeek-1]}    ${hours} : ${minutes}`;
+dateArea.textContent = `${days[dayOfWeek-1]} ${hours < 10 ? '0' + hours : hours} : ${minutes < 10 ? '0' + minutes : minutes}`;
 
 console.log(currentTime);
 console.log(codeKey);
-
-
 
 export const encryptText = (event) =>{
     const outputContainer = document.querySelector(".output-container");
